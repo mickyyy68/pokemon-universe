@@ -81,6 +81,20 @@ int selectMovement(char movementChoice) {
       pokeMarket();
     }
   }
+  
+  // Salva la partita quando si preme 'S'
+  else if (movementChoice == 's' || movementChoice == 'S') {
+    extern void saveGame();
+    saveGame();
+  }
+  
+  // Esci dal gioco quando si preme 'U'
+  else if (movementChoice == 'u' || movementChoice == 'U') {
+    clear;
+    printf("Grazie per aver giocato a Pokemon Universe!\n");
+    sleep(2);
+    return 0; // Ritorna 0 per segnalare l'uscita dal gioco
+  }
 
   // SE VUOLE CAMBIARE MAPPA
   else if (disegnoCitta[cittaAttuale][player.posY][player.posX] == 5) {

@@ -1,0 +1,93 @@
+{
+  "player": {
+    "posX": 1,
+    "posY": 0,
+    "borsa": {
+      "soldi": 500,
+      "pokeBalls": 5,
+      "greatBalls": 0,
+      "ultraBalls": 0
+    }
+  },
+  "cittaAttuale": 0,
+  "slots": [
+    {
+      "nome": "Bulbasaur",
+      "index": 5,
+      "maxHP": 135,
+      "hp": 135,
+      "atk": 15,
+      "def": 30,
+      "spd": 15,
+      "livello": 5,
+      "xp": 0,
+      "catchRate": 180,
+      "slotPieno": 1
+    },
+    {
+      "nome": "Pikachu",
+      "index": 0,
+      "maxHP": 120,
+      "hp": 120,
+      "atk": 24,
+      "def": 15,
+      "spd": 34,
+      "livello": 4,
+      "xp": 0,
+      "catchRate": 190,
+      "slotPieno": 1
+    },
+    {
+      "nome": "",
+      "index": 0,
+      "maxHP": 0,
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "spd": 0,
+      "livello": 0,
+      "xp": 0,
+      "catchRate": 0,
+      "slotPieno": 0
+    },
+    {
+      "nome": "",
+      "index": 0,
+      "maxHP": 0,
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "spd": 0,
+      "livello": 0,
+      "xp": 0,
+      "catchRate": 0,
+      "slotPieno": 0
+    },
+    {
+      "nome": "",
+      "index": 0,
+      "maxHP": 0,
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "spd": 0,
+      "livello": 0,
+      "xp": 0,
+      "catchRate": 0,
+      "slotPieno": 0
+    },
+    {
+      "nome": "",
+      "index": 0,
+      "maxHP": 0,
+      "hp": 0,
+      "atk": 0,
+      "def": 0,
+      "spd": 0,
+      "livello": 0,
+      "xp": 0,
+      "catchRate": 0,
+      "slotPieno": 0
+    }
+  ]
+}
