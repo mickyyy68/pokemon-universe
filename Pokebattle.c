@@ -3,7 +3,7 @@
 extern int cittaAttuale;
 extern int copyStatsToPokemonSelvatico();
 extern int copyStatsFromToSlot();
-extern int writeHP();
+extern void writeHP();
 extern t_pokemonSelvatico pokemonSelvatico;
 extern t_slot slot[7];
 extern int i, x;
