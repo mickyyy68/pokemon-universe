@@ -50,6 +50,8 @@ int copyStatsToPokemonSelvatico(int fromPokemon, int livello){
   pokemonSelvatico.xp = xpTotali;
   pokemonSelvatico.livello = livello;
   pokemonSelvatico.catchRate = pokemon[fromPokemon].catchRate;
+  pokemonSelvatico.index = fromPokemon;
+  return 1; // Ritorno un valore per indicare successo
 }
 
 

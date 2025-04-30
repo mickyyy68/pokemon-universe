@@ -44,3 +44,38 @@ int writeHP(int hp, int maxHP){
 
   return 0;
 }
+#include "all.h"
+
+// Stampa una barra di HP colorata
+void writeHP(int hp, int maxHP) {
+  // Calcola la percentuale di HP rimanente
+  float percentage = (float)hp / maxHP;
+  
+  // Scegli il colore in base alla percentuale
+  if (percentage > 0.5) {
+    green; // Verde per HP > 50%
+  } else if (percentage > 0.2) {
+    yellow; // Giallo per HP tra 20% e 50%
+  } else {
+    red; // Rosso per HP < 20%
+  }
+  
+  // Stampa gli HP come testo
+  printf("HP: %3d/%-3d ", hp, maxHP);
+  
+  // Stampa la barra grafica
+  int barLength = 10;
+  int filledLength = (int)(percentage * barLength);
+  
+  printf("[");
+  for (int i = 0; i < barLength; i++) {
+    if (i < filledLength) {
+      printf("■");
+    } else {
+      printf("□");
+    }
+  }
+  printf("]");
+  
+  resetcolor;
+}
