@@ -5,7 +5,7 @@ extern int disegnoCitta[2][CITTA_RIGHE][CITTA_COLONNE];
 extern int cittaAttuale;
 extern int i;
 extern t_slot slot[7];
-extern int writeHP();
+extern void writeHP();
 extern t_player player;
 
 extern void swapSlotToSlot();
