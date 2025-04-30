@@ -82,8 +82,8 @@ int selectMovement(char movementChoice) {
     }
   }
   
-  // Salva la partita quando si preme 'S'
-  else if (movementChoice == 's' || movementChoice == 'S') {
+  // Salva la partita quando si preme 'I'
+  else if (movementChoice == 'i' || movementChoice == 'I') {
     extern void saveGame();
     saveGame();
   }
