@@ -17,7 +17,15 @@ char playerEmoji[8] = "🧍"; // 4 perchè altrimenti non va(penso siano i bit)
 //--------------------------------VARIABILI              ------------------------------------------------------------------------------------//
 //-------------------------------------------------------------------------------------------------------------------------------------------//
 // nomi pokemon
-char *pokemonsNames[POKEMONS] = {"Pikachu", "Rattata", "Arch", "Void", "Arcanine"};
+char *pokemonsNames[POKEMONS] = {
+  // Originali
+  "Pikachu", "Rattata", "Arch", "Void", "Arcanine",
+  // Nuovi Pokémon
+  "Bulbasaur", "Charmander", "Squirtle", "Jigglypuff", "Meowth",
+  "Growlithe", "Machop", "Gastly", "Onix", "Hitmonlee",
+  "Lickitung", "Chansey", "Tangela", "Kangaskhan", "Scyther",
+  "Electabuzz", "Magmar", "Gyarados", "Lapras", "Eevee"
+};
 // cicli
 int i, x, y;
 // citta attuale, dove è il giocatore(mappa)

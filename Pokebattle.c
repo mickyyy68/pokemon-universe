@@ -23,32 +23,46 @@ void pokeBattle(){
 
   // OGNI CITTA I PROPRI POKEMON E I PROPRI LIVELLI!!!!!
   if(cittaAttuale == 0){
+    // Napoli - Pokémon base (Livelli 1-5)
     livelloPokemonSelvatico = (rand() % 5) + 1;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    int pokemonPossibili[] = {0, 1, 2, 3, 4};
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   else if(cittaAttuale == 1){
-    livelloPokemonSelvatico = (rand() % 15) + 1;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    // Arcipelago - Pokémon di tipo acqua e alcuni base (Livelli 5-15)
+    livelloPokemonSelvatico = (rand() % 11) + 5;
+    int pokemonPossibili[] = {1, 7, 9, 22, 23}; // Rattata, Squirtle, Meowth, Gyarados, Lapras
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   else if(cittaAttuale == 2){
-    livelloPokemonSelvatico = (rand() % 20) + 10;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    // Montagna - Pokémon di tipo roccia/lotta (Livelli 10-25)
+    livelloPokemonSelvatico = (rand() % 16) + 10;
+    int pokemonPossibili[] = {11, 13, 14, 18, 24}; // Machop, Onix, Hitmonlee, Kangaskhan, Eevee
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   else if(cittaAttuale == 3){
-    livelloPokemonSelvatico = (rand() % 20) + 15;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    // Foresta - Pokémon di tipo erba/insetto (Livelli 15-30)
+    livelloPokemonSelvatico = (rand() % 16) + 15;
+    int pokemonPossibili[] = {5, 8, 17, 19, 24}; // Bulbasaur, Jigglypuff, Tangela, Scyther, Eevee
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   else if(cittaAttuale == 4){
-    livelloPokemonSelvatico = (rand() % 20) + 20;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    // Deserto - Pokémon di tipo normale/terra (Livelli 20-35)
+    livelloPokemonSelvatico = (rand() % 16) + 20;
+    int pokemonPossibili[] = {9, 15, 16, 18, 19}; // Meowth, Lickitung, Chansey, Kangaskhan, Scyther
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   else if(cittaAttuale == 5){
-    livelloPokemonSelvatico = (rand() % 20) + 25;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    // Vulcano - Pokémon di tipo fuoco/elettro (Livelli 25-40)
+    livelloPokemonSelvatico = (rand() % 16) + 25;
+    int pokemonPossibili[] = {4, 6, 10, 20, 21}; // Arcanine, Charmander, Growlithe, Electabuzz, Magmar
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   else if(cittaAttuale == 6){
-    livelloPokemonSelvatico = (rand() % 20) + 30;
-    pokemonSelvatico.index = (rand() % POKEMONS);
+    // Grotta - Pokémon rari e spettro (Livelli 30-45)
+    livelloPokemonSelvatico = (rand() % 16) + 30;
+    int pokemonPossibili[] = {12, 14, 20, 22, 23}; // Gastly, Hitmonlee, Electabuzz, Gyarados, Lapras
+    pokemonSelvatico.index = pokemonPossibili[rand() % 5];
   }
   clear;
 
