@@ -1,7 +1,7 @@
 {
   "player": {
-    "posX": 1,
-    "posY": 0,
+    "posX": 4,
+    "posY": 3,
     "borsa": {
       "soldi": 500,
       "pokeBalls": 5,
@@ -9,7 +9,7 @@
       "ultraBalls": 0
     }
   },
-  "cittaAttuale": 0,
+  "cittaAttuale": 1,
   "slots": [
     {
       "nome": "Bulbasaur",
@@ -38,7 +38,7 @@
       "slotPieno": 1
     },
     {
-      "nome": "",
+      "nome": "Pikachu",
       "index": 0,
       "maxHP": 0,
       "hp": 0,
@@ -51,7 +51,7 @@
       "slotPieno": 0
     },
     {
-      "nome": "",
+      "nome": "Pikachu",
       "index": 0,
       "maxHP": 0,
       "hp": 0,
@@ -64,7 +64,7 @@
       "slotPieno": 0
     },
     {
-      "nome": "",
+      "nome": "Pikachu",
       "index": 0,
       "maxHP": 0,
       "hp": 0,
@@ -77,7 +77,7 @@
       "slotPieno": 0
     },
     {
-      "nome": "",
+      "nome": "Pikachu",
       "index": 0,
       "maxHP": 0,
       "hp": 0,
