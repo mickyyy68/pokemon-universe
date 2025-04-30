@@ -1,58 +1,46 @@
 #include "all.h"
-extern int i, x;
 
+extern int i;
 
 int writeHP(int hp, int maxHP){
-  // Scrivi i cosi verdi solo se ha più di 0 di hp
-  if(hp > 0){
-    int vitaVerdeCounter = 0;
-    int vitaArancioneCounter = 0;
-    int  vitaRossaCounter = 0;
-    int vitaVerde = 0;
-    int vitaArancione = 0;
-    int vitaRossa = 0;
-       // Per ogni 10% di hp metto un pallino, fino al max di 10 pallini 
-    for(i = 10; i <= 100; i += 10){ 
-      float vita = (maxHP * i) / 100;
-      if(vita <= hp && i > 50){
-          vitaVerdeCounter++;
-          vitaVerde = 1;
-        }
-      else if(vita <= hp && i <= 50 && i >= 30){
-        vitaArancioneCounter++;
-        vitaArancione = 1;
-      }
-      else if(vita <= hp && i <= 30 && i > 0){
-        vitaRossaCounter++;
-        vitaRossa = 1;
-      }
-    }
-    if(vitaVerde == 1){
-      for(i = vitaVerdeCounter; i > 0; i--)
-        printf("🟢");
-      for(i = vitaArancioneCounter; i > 0; i--)
-        printf("🟢");
-      for(i = vitaRossaCounter; i > 0; i--)
-        printf("🟢");
-    }
-    else if(vitaArancione == 1){
-      for(i = vitaVerdeCounter; i > 0; i--)
-        printf("🟠");
-      for(i = vitaArancioneCounter; i > 0; i--)
-        printf("🟠");
-      for(i = vitaRossaCounter; i > 0; i--)
-        printf("🟠");
-    }
-    else if(vitaRossa == 1){
-      for(i = vitaVerdeCounter; i > 0; i--)
-        printf("🔴");
-      for(i = vitaArancioneCounter; i > 0; i--)
-        printf("🔴");
-      for(i = vitaRossaCounter; i > 0; i--)
-        printf("🔴");
-    }
-    else if(vitaRossaCounter == 0)
-        printf("🔴");
-    printf(" | %d\n", hp);
+  // Calcola la percentuale di salute
+  float percentuale = (float)hp / maxHP * 100;
+
+  // Massimo 10 pallini per la barra HP
+  const int MAX_PALLINI = 10;
+
+  // Calcola quanti pallini mostrare (massimo MAX_PALLINI)
+  int palliniDaMostrare = (int)(percentuale / 10);
+  if (palliniDaMostrare > MAX_PALLINI) palliniDaMostrare = MAX_PALLINI;
+
+  // Determina il colore in base alla percentuale di salute
+  if(hp <= 0){
+    // Assuming red and resetcolor are defined elsewhere, likely in all.h
+    red;
+    printf("ESAUSTO!");
+    resetcolor;
+    return 0;
   }
+
+  // Colori diversi in base alla percentuale di salute
+  if(percentuale > 50){
+    // Verde per salute > 50%
+    for(i = 0; i < palliniDaMostrare; i++)
+      printf("🟢");
+  }
+  else if(percentuale > 20){
+    // Arancione per salute tra 20% e 50%
+    for(i = 0; i < palliniDaMostrare; i++)
+      printf("🟠");
+  }
+  else {
+    // Rosso per salute <= 20%
+    for(i = 0; i < palliniDaMostrare; i++)
+      printf("🔴");
+  }
+
+  // Aggiungi la percentuale numerica accanto alla barra
+  printf(" %d/%d HP", hp, maxHP);
+
+  return 0;
 }

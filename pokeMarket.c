@@ -66,7 +66,7 @@ void pokeMarket(){
 
       case 'Q':{
         shopping = 0;
-        //player.posY--;  Removed as it's unclear from context where this should apply
+        clear;
         break;
       }
 

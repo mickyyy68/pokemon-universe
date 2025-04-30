@@ -88,7 +88,7 @@ void pokeBattle(){
     resetcolor;
     printf("┃ ");
     writeHP(slot[0].hp, slot[0].maxHP);
-    printf("                  ┃\n");
+    printf(" ┃\n");
     printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
     
     // PRINTO LE STATISTICHE DEL POKEMON SELVATICO
@@ -101,7 +101,7 @@ void pokeBattle(){
     resetcolor;
     printf("┃ ");
     writeHP(pokemonSelvatico.hp, pokemonSelvatico.maxHP);
-    printf("                  ┃\n");
+    printf(" ┃\n");
     printf("┃ 🔫 Atk: %-3d | 🛡️ Def: %-3d | 🏃 Spd: %-3d ┃\n", 
            pokemonSelvatico.atk, pokemonSelvatico.def, pokemonSelvatico.spd);
     printf("┃ 🧿 XP da guadagnare: %-3d              ┃\n", xpGained);
