@@ -1,0 +1,89 @@
+#include "all.h"
+
+
+extern int y, x, cittaAttuale;
+extern t_player player;
+extern char playerEmoji[8];
+extern t_pokemon pokemon[POKEMONS];
+
+// MAPPE
+// 1 = blocco
+// 0 = posto in cui si cammina
+// 2 = spawn di pokemons
+// 3 = ospedale
+// 4 = pokemarket
+// 5 = nuova citta
+// 6 = vecchia citta
+
+int disegnoCitta[2][CITTA_RIGHE][CITTA_COLONNE] = {
+  {
+    // Napoli
+    {1,0,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 0
+    {2,0,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 1
+    {1,0,1,3,2,1,1,1,1,1,1,1,1,1,1}, // riga 2
+    {1,0,0,0,0,0,0,0,0,0,0,0,0,0,5}, // riga 3
+    {1,0,1,4,1,1,1,0,1,1,1,1,1,1,1}, // riga 4
+    {1,0,1,1,1,1,1,2,1,1,1,1,1,1,1}, // riga 5
+    {1,0,1,1,1,1,2,2,2,1,1,1,1,1,1}, // riga 6
+    {1,1,1,1,1,1,2,2,2,1,1,1,1,1,1}, // riga 7
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 8
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} // riga 9
+  },
+    // Arcipelago
+  {
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 0
+    {1,1,1,1,1,1,1,1,1,1,1,1,2,2,1}, // riga 1
+    {1,1,1,1,1,1,1,1,1,1,1,1,2,2,1}, // riga 2
+    {6,0,0,0,0,0,0,0,0,0,0,0,2,2,1}, // riga 3
+    {1,1,1,1,1,1,1,1,1,1,3,1,2,2,1}, // riga 4
+    {1,1,1,1,1,1,1,1,1,1,1,1,2,2,1}, // riga 5
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 6
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 7
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, // riga 8
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1} // riga 9
+  }
+};
+
+void printCitta(){
+  clear;
+  for(y = 0; y < 10; y++){ // Righe
+    for(x = 0; x < 15; x++){ // Colonne
+      
+      // Dove printa il giocatore.
+      if(player.posX == x && player.posY == y)
+        printf("%s", playerEmoji); 
+        
+      // Posto in cui si può camminare 
+      else if(disegnoCitta[cittaAttuale][y][x] == 0)
+        printf("  ");
+        
+      // blocco non sorpassabile
+      else if(disegnoCitta[cittaAttuale][y][x] == 1)
+        printf("🟩");
+        
+      // Pokemon spawn
+      else if(disegnoCitta[cittaAttuale][y][x] == 2)
+        printf("🌿");
+        
+      // Ospedale
+      else if(disegnoCitta[cittaAttuale][y][x] == 3)
+        printf("🏥");
+        
+      // Pokemarket
+      else if(disegnoCitta[cittaAttuale][y][x] == 4)
+        printf("🏪");
+        
+      // Cambio mappa dopo
+      else if(disegnoCitta[cittaAttuale][y][x] == 5)
+        printf("➡️");
+      // Cambio mappa prima
+      else if(disegnoCitta[cittaAttuale][y][x] == 6)
+        printf("⬅️ ");
+      
+      // Solo in caso di bugs, ma non fa nulla
+      else
+        printf("%d ", disegnoCitta[cittaAttuale][y][x]);
+    }
+    printf("\n");
+  }
+}
