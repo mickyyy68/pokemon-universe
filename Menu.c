@@ -20,6 +20,7 @@ void printMenu() {
   printf("┏━━━━━━━━━━━ CONTROLLI ━━━━━━━━━━━┓\n");
   printf("┃ Movimento: [W]↑ [A]← [S]↓ [D]→  ┃\n");
   printf("┃ Interagisci: [E] su 🏥/🏪       ┃\n");
+  printf("┃ Scambia Pokémon: [P]            ┃\n");
   printf("┃ Durante battaglia: 1-4 per azioni┃\n");
   printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
 

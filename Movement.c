@@ -38,7 +38,7 @@ int selectMovement(char movementChoice) {
     if (player.posY < CITTA_RIGHE - 1 &&
         disegnoCitta[cittaAttuale][player.posY + 1][player.posX] != 1)
       player.posY++;
-  } else if (movementChoice == 'p') {
+  } else if (movementChoice == 'p' || movementChoice == 'P') {
     swapPokemons();
   }
   //--------------------------------COSA SUCCEDE IN OGNI TILE

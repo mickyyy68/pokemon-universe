@@ -9,3 +9,9 @@ main: $(OBJS)
 
 clean:
 	rm -f $(OBJS) main
+
+pokeMarket.o: pokeMarket.c all.h
+	gcc -c pokeMarket.c
+
+swapPokemons.o: swapPokemons.c all.h
+	gcc -c swapPokemons.c
