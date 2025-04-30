@@ -11,7 +11,7 @@
 
 #define POKEMONS 25
 #define clear system("clear");
-    
+
 // COLORI
 // Colori
 #define red printf("\033[1;31m")
@@ -101,3 +101,9 @@ typedef struct{
 
 
 
+
+// Lista delle funzioni
+extern void writeHP(); // Barra di hp
+extern void swapPokemons(); // Swap dei pokemon (ora in swapPokemons.c)
+extern void catchPokemon(); // Pokemon catturati(BORSAAAAAAA)
+extern void pokeMarket(); // Pokeshop

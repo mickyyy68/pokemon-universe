@@ -112,61 +112,7 @@ int swappingPokemons(int slotSwapFrom, int slotSwapTo){
 
 
 
-void swapPokemons(){
-  clear;
-  cyan;
-  printf("Slot 1\n");
-  resetcolor;
-  printf("%s", slot[0].nome);
-  cyan;
-  printf("\nSlot 2\n");
-  resetcolor;
-  printf("%s", slot[1].nome);
-  cyan;
-  printf("\nSlot 3\n");
-  resetcolor;
-  printf("%s", slot[2].nome);
-  cyan;
-  printf("\nSlot 4\n");
-  resetcolor;
-  printf("%s", slot[3].nome);
-  cyan;
-  printf("\nSlot 5\n");
-  resetcolor;
-  printf("%s", slot[4].nome);
-  cyan;
-  printf("\nSlot 6\n");
-  resetcolor;
-  printf("%s", slot[5].nome);
-  printf("\n\n");
-  printf("Chi vorresti scambiare?");
-  printf("\nDa slot n°: ");
-  scanf("%d", &slotSwapFrom);
-  printf("A slot n°: ");
-  scanf("%d", &slotSwapTo);
-  swappingPokemons(slotSwapFrom-1, 6); // variabile temporanea
-  swappingPokemons(slotSwapTo-1, slotSwapFrom-1); // ora sposto lo slot 1 allo slot 0
-  swappingPokemons(6, slotSwapTo-1); // ora sposto lo slot 7(aka 0) allo slot 1
-  slot[slotSwapFrom-1].slotPieno = 1;
-  slot[slotSwapTo-1].slotPieno = 1;
-  
-  
-  // -1 perchè se tipo l'utente sceglie slot 1, io facendo 1-1 fa 0 e infatti lo slot 1 è in realtà lo slot 0
-  
-  /* COME ERA PRIMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  // Variabile temporanea
-  copyStatsFromToSlot(slot[slotSwapFrom].index, slot[slotSwapFrom].livello, 6);
-  slot[6].xp = slot[slotSwapFrom].xp;
-
-  // Sposto allo slot 0
-  copyStatsFromToSlot(slot[slotSwapTo].index, slot[slotSwapTo].livello, 0);
-  slot[slotSwapTo].xp = slot[6].xp;
-  // Sposto allo slot 1
-  copyStatsFromToSlot(slot[6].index, slot[6].livello, 1);
-  slot[1].xp = slot[6].xp;
-  // Funziona, ma devo riscrivere un'altra volta la roba delle copyStats perchè altrimenti gli hp li resetta. Potrei fare delle variabili bool per quello. Se tipo CopyHp = True, copio gli hp, se CopyAtk = true, copio gli atk e cosi via...
-  */
-
-}
+// La funzione swapPokemons è stata spostata nel file swapPokemons.c
+// per evitare conflitti di definizione
 
 // https://bulbapedia.bulbagarden.net/wiki/Catch_rate
