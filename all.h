@@ -107,3 +107,4 @@ extern void writeHP(); // Barra di hp
 extern void swapPokemons(); // Swap dei pokemon (ora in swapPokemons.c)
 extern void catchPokemon(); // Pokemon catturati(BORSAAAAAAA)
 extern void pokeMarket(); // Pokeshop
+extern void saveGame(); // Salva la partita
