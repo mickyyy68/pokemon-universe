@@ -63,15 +63,23 @@ int selectMovement(char movementChoice){
 
 
       
-    // Se va nell'ospedale gli cura i pokemon
-    else if(disegnoCitta[cittaAttuale][player.posY][player.posX] == 3){
-      for(i = 0; i < 6; i++)
-          slot[i].hp = slot[i].maxHP; 
-    }
-
-    // Se va nel pokemarket
-    else if(disegnoCitta[cittaAttuale][player.posY][player.posX] == 4){
-      pokeMarket();
+    // Per interagire con ospedale o negozio ora serve premere 'E'
+    else if(movementChoice == 'e' || movementChoice == 'E'){
+      // Se si trova nell'ospedale
+      if(disegnoCitta[cittaAttuale][player.posY][player.posX] == 3){
+        clear;
+        green;
+        printf("Benvenuto al Centro Pokémon!\n");
+        printf("I tuoi Pokémon sono stati curati completamente.\n");
+        resetcolor;
+        for(i = 0; i < 6; i++)
+          slot[i].hp = slot[i].maxHP;
+        sleep(1);
+      }
+      // Se si trova nel pokemarket
+      else if(disegnoCitta[cittaAttuale][player.posY][player.posX] == 4){
+        pokeMarket();
+      }
     }
 
 

@@ -21,7 +21,7 @@ void printMenu(){
   // Controlli di gioco in un box
   printf("┏━━━━━━━━━━━ CONTROLLI ━━━━━━━━━━━┓\n");
   printf("┃ Movimento: [W]↑ [A]← [S]↓ [D]→  ┃\n");
-  printf("┃ PokéMarket/Ospedale: Entra con E ┃\n");
+  printf("┃ Interagisci: [E] su 🏥/🏪       ┃\n");
   printf("┃ Durante battaglia: 1-4 per azioni┃\n");
   printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
   
