@@ -79,15 +79,39 @@ void pokeBattle(){
 
   do{
     // PRINTO LE STATISTICHE DEL POKEMON IN BATTAGLIA
-    printf("%s - %d\n", slot[0].nome, slot[0].livello);
+    printf("┏━━━━━━━━━━ IL TUO POKÉMON ━━━━━━━━━━┓\n");
+    bold;
+    printf("┃ %s - Livello %d", slot[0].nome, slot[0].livello);
+    int spazi = 35 - strlen(slot[0].nome) - 11;
+    for(int i = 0; i < spazi; i++) printf(" ");
+    printf("┃\n");
+    resetcolor;
+    printf("┃ ");
     writeHP(slot[0].hp, slot[0].maxHP);
+    printf("                  ┃\n");
+    printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+    
     // PRINTO LE STATISTICHE DEL POKEMON SELVATICO
-    printf("\n\n%s - %d - %d\n", pokemonSelvatico.nome, pokemonSelvatico.livello, xpGained);
+    printf("\n┏━━━━━━━━━ POKÉMON SELVATICO ━━━━━━━━━┓\n");
+    cyan; bold;
+    printf("┃ %s - Livello %d", pokemonSelvatico.nome, pokemonSelvatico.livello);
+    spazi = 35 - strlen(pokemonSelvatico.nome) - 11;
+    for(int i = 0; i < spazi; i++) printf(" ");
+    printf("┃\n");
+    resetcolor;
+    printf("┃ ");
     writeHP(pokemonSelvatico.hp, pokemonSelvatico.maxHP);
-    printf("Atk: %d\nDef: %d\nSpd: %d\n",pokemonSelvatico.atk, pokemonSelvatico.def, pokemonSelvatico.spd);
+    printf("                  ┃\n");
+    printf("┃ 🔫 Atk: %-3d | 🛡️ Def: %-3d | 🏃 Spd: %-3d ┃\n", 
+           pokemonSelvatico.atk, pokemonSelvatico.def, pokemonSelvatico.spd);
+    printf("┃ 🧿 XP da guadagnare: %-3d              ┃\n", xpGained);
+    printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
 
     // CHIEDO ALL'UTENTE COSA VUOLE FARE
-    printf("[1] -> Attacca  [2] -> Borsa\n[3] -> Boh      [4] -> Fuga\n\n-> ");
+    printf("┏━━━━━━━━━━━━ AZIONI ━━━━━━━━━━━━┓\n");
+    printf("┃ [1] 🔫 Attacca    [2] 🎒 Borsa  ┃\n");
+    printf("┃ [3] 💬 Parla      [4] 🏃 Fuga   ┃\n");
+    printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n-> ");
     scanf(" %c", &pokeBattleChoice);
     switch(pokeBattleChoice){
       case '1':

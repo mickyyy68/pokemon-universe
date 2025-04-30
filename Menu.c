@@ -16,29 +16,54 @@ extern void swapSlotToSlot();
 //--------------------------------PRINTO IL MENU              -------------------------------------------------------------------------------//
 //-------------------------------------------------------------------------------------------------------------------------------------------//
 void printMenu(){
+  printf("\n");
   
-  printf("\n\n");
-  printf("[w] - [a] - [s] - [d]\n");
-  red;
-  printf("\n%s:\n", slot[0].nome);
+  // Controlli di gioco in un box
+  printf("┏━━━━━━━━━━━ CONTROLLI ━━━━━━━━━━━┓\n");
+  printf("┃ Movimento: [W]↑ [A]← [S]↓ [D]→  ┃\n");
+  printf("┃ PokéMarket/Ospedale: Entra con E ┃\n");
+  printf("┃ Durante battaglia: 1-4 per azioni┃\n");
+  printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+  
+  // Box con info Pokémon attivo
+  printf("\n┏━━━━━━━━━━ POKÉMON ATTIVO ━━━━━━━━━━┓\n");
+  
+  // Nome Pokémon con colore
+  bold; red;
+  printf("┃ %s", slot[0].nome);
+  // Aggiungo spazi per allineare la box
+  int spazi = 35 - strlen(slot[0].nome);
+  for(int i = 0; i < spazi; i++) printf(" ");
+  printf("┃\n");
   resetcolor;
-  // SCRIVO LA VITA DEL POKEMON SLOT 0 /////////
+  
+  // Stato HP
+  printf("┃ ");
   if(slot[0].hp > 0){
-    writeHP(slot[0].hp, slot[0].maxHP);  
-  // altrimenti no
-  }else{
+    writeHP(slot[0].hp, slot[0].maxHP);
+    // Calcolo gli spazi rimanenti e li aggiungo
+    int hpLength = 15; // Lunghezza media della barra HP con testo
+    int hpSpaces = 35 - hpLength;
+    for(int i = 0; i < hpSpaces; i++) printf(" ");
+  } else {
     red;
-    printf("Il pokemon è esausto...\n");
+    printf("Pokemon esausto! Vai all'ospedale");
     resetcolor;
   }
+  printf(" ┃\n");
   
-  // Statistiche pokemon slot 1
-  printf("🔷 | Lvl: %d\n", slot[0].livello);
-  printf("🧿 | XP:  %d\n", slot[0].xp);
-  printf("🔫 | Atk: %d\n", slot[0].atk);
-  printf("🛡️  | Def: %d\n", slot[0].def);
-  printf("🏃 | Spd: %d\n", slot[0].spd);
-  printf("◓  | Pokeballs: %d\n", player.borsa.pokeBalls);
-  printf("PosX: %d\nPosY: %d\n", player.posX, player.posY);
-  printf("MaxHP: %d\n", slot[0].maxHP);
+  // Box statistiche a due colonne
+  printf("┣━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┫\n");
+  printf("┃ 🔷 Livello: %-3d   ┃ 🧿 XP: %-9d  ┃\n", slot[0].livello, slot[0].xp);
+  printf("┃ 🔫 Attacco: %-3d   ┃ 🛡️  Difesa: %-3d   ┃\n", slot[0].atk, slot[0].def);
+  printf("┃ 🏃 Velocità: %-3d  ┃ ❤️  Max HP: %-3d   ┃\n", slot[0].spd, slot[0].maxHP);
+  printf("┗━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┛\n");
+  
+  // Inventario e posizione
+  printf("\n┏━━━━━━━━━━━ INVENTARIO ━━━━━━━━━━━┓\n");
+  printf("┃ 🔴 Pokeball: %-3d                 ┃\n", player.borsa.pokeBalls);
+  printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
+  
+  // Posizione attuale
+  printf("\n📍 Posizione: X=%d, Y=%d (Città: %d)\n", player.posX, player.posY, cittaAttuale);
 }
