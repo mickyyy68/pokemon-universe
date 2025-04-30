@@ -88,6 +88,12 @@ int selectMovement(char movementChoice) {
     saveGame();
   }
   
+  // Visualizza il Pokedex quando si preme 'O'
+  else if (movementChoice == 'o' || movementChoice == 'O') {
+    extern void mostraPokedex();
+    mostraPokedex();
+  }
+  
   // Esci dal gioco quando si preme 'U'
   else if (movementChoice == 'u' || movementChoice == 'U') {
     clear;

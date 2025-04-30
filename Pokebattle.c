@@ -75,6 +75,10 @@ void pokeBattle(){
   fighting = 1;
   int won = 0;
   printf("Hai trovato un %s selvatico!\n", pokemonSelvatico.nome);
+  
+  // Aggiorna il Pokedex quando vedi un pokemon
+  extern void updatePokedex(int indexPokemon, int catturato);
+  updatePokedex(pokemonSelvatico.index, 0);
 
 
   do{

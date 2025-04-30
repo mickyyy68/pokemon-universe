@@ -21,3 +21,6 @@ saveGame.o: saveGame.c all.h
 
 mainMenu.o: mainMenu.c all.h
 	gcc -c mainMenu.c
+
+pokedex.o: pokedex.c all.h
+	gcc -c pokedex.c

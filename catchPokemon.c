@@ -59,6 +59,11 @@ void catchPokemon(){
       if(rand() <  0.25 * ((double)RAND_MAX + 1.0)){
         printf("Lo hai catturato!\n");
         sleep(1);
+        
+        // Aggiorna il Pokedex
+        extern void updatePokedex(int indexPokemon, int catturato);
+        updatePokedex(pokemonSelvatico.index, 1);
+        
         if(slot[0].slotPieno == 0)
           slotLibero = 0;
         else if(slot[1].slotPieno == 0)

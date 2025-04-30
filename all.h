@@ -108,3 +108,5 @@ extern void swapPokemons(); // Swap dei pokemon (ora in swapPokemons.c)
 extern void catchPokemon(); // Pokemon catturati(BORSAAAAAAA)
 extern void pokeMarket(); // Pokeshop
 extern void saveGame(); // Salva la partita
+extern void updatePokedex(int indexPokemon, int catturato); // Aggiorna il pokedex
+extern void mostraPokedex(); // Mostra il pokedex
