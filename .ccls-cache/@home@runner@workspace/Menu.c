@@ -55,12 +55,9 @@ void printMenu() {
 
   // Box statistiche a due colonne
   printf("┣━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┫\n");
-  printf("┃ 🔷 Livello: %-3d   ┃ 🧿 XP: %-9d  ┃\n", slot[0].livell
-         , slot[0].xp);
-  printf("┃ 🔫 Attacco: %-3d   ┃ 🛡️  Difesa: %-3d   ┃\n
-         , slot[0].atk, slot[0].def);
-  printf("┃ 🏃 Velocità: %-3d  ┃ ❤️  Max HP: %-3d   ┃\n"
-          slot[0].spd, slot[0].maxHP);
+  printf("┃ 🔷 Livello: %-3d   ┃ 🧿 XP: %-9d  ┃\n", slot[0].livello, slot[0].xp);
+  printf("┃ 🔫 Attacco: %-3d   ┃ 🛡️  Difesa: %-3d   ┃\n", slot[0].atk, slot[0].def);
+  printf("┃ 🏃 Velocità: %-3d  ┃ ❤️  Max HP: %-3d   ┃\n", slot[0].spd, slot[0].maxHP);
   printf("┗━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┛\n");
 
   // Inventario e posizione
@@ -69,6 +66,5 @@ void printMenu() {
   printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
 
   // Posizione attuale
-  printf("\n📍 Posizione: X=%d, Y=%d (Città: %d)\n", player.posX, player.posY
-          cittaAttuale);
+  printf("\n📍 Posizione: X=%d, Y=%d (Città: %d)\n", player.posX, player.posY, cittaAttuale);
 }
