@@ -96,4 +96,6 @@ int selectMovement(char movementChoice) {
       player.posY = 3;
     }
   }
+
+  return 1; // Continua il gioco
 }

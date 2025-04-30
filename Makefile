@@ -15,3 +15,9 @@ pokeMarket.o: pokeMarket.c all.h
 
 swapPokemons.o: swapPokemons.c all.h
 	gcc -c swapPokemons.c
+
+saveGame.o: saveGame.c all.h
+	gcc -c saveGame.c
+
+mainMenu.o: mainMenu.c all.h
+	gcc -c mainMenu.c
