@@ -9,7 +9,7 @@
 #include <termios.h>
 #include <unistd.h>
 
-#define POKEMONS 5
+#define POKEMONS 25
 #define clear system("clear");
     
 // COLORI
