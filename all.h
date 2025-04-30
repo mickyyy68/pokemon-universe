@@ -1,3 +1,7 @@
+
+#ifndef ALL_H
+#define ALL_H
+
 //--------------------------------ATTENZIONE!       ------------------------------------------------------------------------------------//
 // Su all.h non posso mettere le variabili, altrimenti da problemi che l'ho inizializzata troppe volte
 
@@ -110,3 +114,5 @@ extern void pokeMarket(); // Pokeshop
 extern void saveGame(); // Salva la partita
 extern void updatePokedex(int indexPokemon, int catturato); // Aggiorna il pokedex
 extern void mostraPokedex(); // Mostra il pokedex
+
+#endif // ALL_H

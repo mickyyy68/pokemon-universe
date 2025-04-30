@@ -2,7 +2,7 @@
 
 extern int i;
 
-int writeHP(int hp, int maxHP){
+void writeHP(int hp, int maxHP){
   // Calcola la percentuale di salute
   float percentuale = (float)hp / maxHP * 100;
 
@@ -42,10 +42,11 @@ int writeHP(int hp, int maxHP){
   // Aggiungi la percentuale numerica accanto alla barra
   printf(" %d/%d HP", hp, maxHP);
 
-  return 0;
+  return;
 }
-#include "all.h"
 
+// This function is commented out to avoid duplicate definition
+/*
 // Stampa una barra di HP colorata
 void writeHP(int hp, int maxHP) {
   // Calcola la percentuale di HP rimanente
@@ -79,3 +80,4 @@ void writeHP(int hp, int maxHP) {
   
   resetcolor;
 }
+*/
