@@ -26,10 +26,29 @@ void pokeBattle(){
     livelloPokemonSelvatico = (rand() % 5) + 1;
     pokemonSelvatico.index = (rand() % POKEMONS);
   }
-    
   else if(cittaAttuale == 1){
     livelloPokemonSelvatico = (rand() % 15) + 1;
-    pokemonSelvatico.index = (rand() % POKEMONS + 1);
+    pokemonSelvatico.index = (rand() % POKEMONS);
+  }
+  else if(cittaAttuale == 2){
+    livelloPokemonSelvatico = (rand() % 20) + 10;
+    pokemonSelvatico.index = (rand() % POKEMONS);
+  }
+  else if(cittaAttuale == 3){
+    livelloPokemonSelvatico = (rand() % 20) + 15;
+    pokemonSelvatico.index = (rand() % POKEMONS);
+  }
+  else if(cittaAttuale == 4){
+    livelloPokemonSelvatico = (rand() % 20) + 20;
+    pokemonSelvatico.index = (rand() % POKEMONS);
+  }
+  else if(cittaAttuale == 5){
+    livelloPokemonSelvatico = (rand() % 20) + 25;
+    pokemonSelvatico.index = (rand() % POKEMONS);
+  }
+  else if(cittaAttuale == 6){
+    livelloPokemonSelvatico = (rand() % 20) + 30;
+    pokemonSelvatico.index = (rand() % POKEMONS);
   }
   clear;
 

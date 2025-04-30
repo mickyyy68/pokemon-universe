@@ -79,13 +79,14 @@ int selectMovement(char movementChoice){
       
     // SE VUOLE CAMBIARE MAPPA
     else if(disegnoCitta[cittaAttuale][player.posY][player.posX] == 5){
-      if(cittaAttuale >= 0)
+      if(cittaAttuale < 6) {
         cittaAttuale++;
         player.posX = 1;
         player.posY = 3;
       }
+    }
     else if(disegnoCitta[cittaAttuale][player.posY][player.posX] == 6){
-      if(cittaAttuale >= 0){
+      if(cittaAttuale > 0) {
         cittaAttuale--;
         player.posX = 13;
         player.posY = 3;
