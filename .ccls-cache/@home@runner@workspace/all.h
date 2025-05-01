@@ -1,3 +1,7 @@
+
+#ifndef ALL_H
+#define ALL_H
+
 //--------------------------------ATTENZIONE!       ------------------------------------------------------------------------------------//
 // Su all.h non posso mettere le variabili, altrimenti da problemi che l'ho inizializzata troppe volte
 
@@ -103,10 +107,12 @@ typedef struct{
 
 
 // Lista delle funzioni
-extern void writeHP(); // Barra di hp
+extern void writeHP(int hp, int maxHP); // Barra di hp
 extern void swapPokemons(); // Swap dei pokemon (ora in swapPokemons.c)
 extern void catchPokemon(); // Pokemon catturati(BORSAAAAAAA)
 extern void pokeMarket(); // Pokeshop
 extern void saveGame(); // Salva la partita
 extern void updatePokedex(int indexPokemon, int catturato); // Aggiorna il pokedex
 extern void mostraPokedex(); // Mostra il pokedex
+
+#endif // ALL_H

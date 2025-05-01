@@ -17,7 +17,15 @@ char playerEmoji[8] = "🧍"; // 4 perchè altrimenti non va(penso siano i bit)
 //--------------------------------VARIABILI              ------------------------------------------------------------------------------------//
 //-------------------------------------------------------------------------------------------------------------------------------------------//
 // nomi pokemon
-char *pokemonsNames[POKEMONS] = {"Pikachu", "Rattata", "Arch", "Void", "Arcanine"};
+char *pokemonsNames[POKEMONS] = {
+  // Originali
+  "Pikachu", "Rattata", "Arch", "Void", "Arcanine",
+  // Nuovi Pokémon
+  "Bulbasaur", "Charmander", "Squirtle", "Jigglypuff", "Meowth",
+  "Growlithe", "Machop", "Gastly", "Onix", "Hitmonlee",
+  "Lickitung", "Chansey", "Tangela", "Kangaskhan", "Scyther",
+  "Electabuzz", "Magmar", "Gyarados", "Lapras", "Eevee"
+};
 // cicli
 int i, x, y;
 // citta attuale, dove è il giocatore(mappa)
@@ -41,7 +49,8 @@ extern void printCitta();
 extern void inizializeStatsPokemon();
 extern void askFirstPokemon();
 extern void printMenu();
-extern void selectMovement();
+extern int selectMovement(char movementChoice);
+extern int mainMenu();
 
 //--------------------------------per fare l'input senza cliccare enter ----------------------------------------------------------------//
 // La funzione getch() serve.
@@ -91,18 +100,13 @@ char getche(void)
 
 int main() {
   srand(time(NULL));
-  //------------------------------------//
-  // Da quale citta parte il giocatore
-  cittaAttuale = 0;
-  player.posX = 1;
-  player.posY = 0;
-  //------------------------------------//
-  // Inizializzo i pokemon, dandogli manualmente le stats, e i nomi tramite un array.
-  inizializeStatsPokemon();
-  //------------------------------------//
-  // Chiedo all'utente il suo primo pokemon
-  askFirstPokemon();
-  //------------------------------------//  
+  
+  // Mostra il menu principale e ottiene la scelta dell'utente
+  if (!mainMenu()) {
+    // L'utente ha scelto di uscire dal gioco
+    return 0;
+  }
+  
   // Il ciclo continua finchè playing è true
   while(playing){
     //------------------------------------//
@@ -113,7 +117,10 @@ int main() {
     
     // Qui è quando l'utente mette input dove vuole muoversi. Qui calcolo le tile dove l'utente sta 
     movementChoice = getch();
-    selectMovement(movementChoice);
+    if (!selectMovement(movementChoice)) {
+      // L'utente ha scelto di uscire dal gioco
+      break;
+    }
   }//while playing
   return 0;
 }
