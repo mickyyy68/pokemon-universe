@@ -1,10 +1,10 @@
 {
   "player": {
-    "posX": 5,
+    "posX": 4,
     "posY": 3,
     "borsa": {
-      "soldi": 500,
-      "pokeBalls": 2,
+      "soldi": 0,
+      "pokeBalls": 7,
       "greatBalls": 0,
       "ultraBalls": 0
     }

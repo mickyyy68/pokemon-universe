@@ -1,10 +1,10 @@
 {
   "player": {
-    "posX": 5,
+    "posX": 4,
     "posY": 3,
     "borsa": {
-      "soldi": 500,
-      "pokeBalls": 2,
+      "soldi": 0,
+      "pokeBalls": 4,
       "greatBalls": 0,
       "ultraBalls": 0
     }
@@ -38,13 +38,13 @@
       "slotPieno": 1
     },
     {
-      "nome": "Void",
-      "index": 3,
-      "maxHP": 110,
-      "hp": 110,
-      "atk": 35,
-      "def": 15,
-      "spd": 25,
+      "nome": "Rattata",
+      "index": 1,
+      "maxHP": 125,
+      "hp": 125,
+      "atk": 5,
+      "def": 5,
+      "spd": 10,
       "livello": 5,
       "xp": 0,
       "catchRate": 0,
@@ -91,7 +91,7 @@
     }
   ]
   "pokedex": {
-    "pokemonVisti": [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    "pokemonCatturati": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    "pokemonVisti": [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "pokemonCatturati": [0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   }
 }

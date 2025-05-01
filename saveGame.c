@@ -6,16 +6,18 @@ extern t_player player;
 extern t_slot slot[7];
 extern int cittaAttuale;
 extern char *pokemonsNames[POKEMONS];
+extern int pokemonVisti[POKEMONS];
+extern int pokemonCatturati[POKEMONS];
 
 // Funzione per creare un percorso di file
-char* getFilePath(const char* fileName) {
+char *getFilePath(const char *fileName) {
   static char filePath[256];
   sprintf(filePath, "%s", fileName);
   return filePath;
 }
 
 // Verifica se un file esiste
-int fileExists(const char* fileName) {
+int fileExists(const char *fileName) {
   struct stat buffer;
   return (stat(fileName, &buffer) == 0);
 }
@@ -26,23 +28,24 @@ void saveGame() {
   FILE *file;
   char fileName[50];
   char filePath[256];
-  
-  cyan; bold;
+
+  cyan;
+  bold;
   printf("┏━━━━━━━━━━━━━━━━ SALVATAGGIO PARTITA ━━━━━━━━━━━━━━━━┓\n");
   resetcolor;
   printf("┃                                                     ┃\n");
   printf("┃ Inserisci il nome del salvataggio:                  ┃\n");
   printf("┃                                                     ┃\n");
   printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
-  
+
   printf("Nome: ");
   scanf("%s", fileName);
-  
+
   sprintf(filePath, "games/%s.json", fileName);
-  
+
   // Crea la directory games se non esiste
   mkdir("games", 0777);
-  
+
   file = fopen(filePath, "w");
   if (file == NULL) {
     red;
@@ -51,10 +54,10 @@ void saveGame() {
     sleep(2);
     return;
   }
-  
+
   // Inizio JSON
   fprintf(file, "{\n");
-  
+
   // Salva i dati del giocatore
   fprintf(file, "  \"player\": {\n");
   fprintf(file, "    \"posX\": %d,\n", player.posX);
@@ -66,10 +69,10 @@ void saveGame() {
   fprintf(file, "      \"ultraBalls\": %d\n", player.borsa.ultraBalls);
   fprintf(file, "    }\n");
   fprintf(file, "  },\n");
-  
+
   // Salva la città attuale
   fprintf(file, "  \"cittaAttuale\": %d,\n", cittaAttuale);
-  
+
   // Salva i dati dei Pokémon negli slot
   fprintf(file, "  \"slots\": [\n");
   for (int i = 0; i < 6; i++) {
@@ -92,12 +95,31 @@ void saveGame() {
     }
   }
   fprintf(file, "  ]\n");
-  
+
+  // Salva i dati del Pokedex
+  fprintf(file, "  \"pokedex\": {\n");
+  fprintf(file, "    \"pokemonVisti\": [");
+  for (int i = 0; i < POKEMONS; i++) {
+    fprintf(file, "%d", pokemonVisti[i]);
+    if (i < POKEMONS - 1)
+      fprintf(file, ", ");
+  }
+  fprintf(file, "],\n");
+
+  fprintf(file, "    \"pokemonCatturati\": [");
+  for (int i = 0; i < POKEMONS; i++) {
+    fprintf(file, "%d", pokemonCatturati[i]);
+    if (i < POKEMONS - 1)
+      fprintf(file, ", ");
+  }
+  fprintf(file, "]\n");
+  fprintf(file, "  }\n");
+
   // Fine JSON
   fprintf(file, "}\n");
-  
+
   fclose(file);
-  
+
   green;
   printf("\nPartita salvata con successo come '%s'!\n", fileName);
   resetcolor;
@@ -106,14 +128,14 @@ void saveGame() {
 }
 
 // Carica una partita precedentemente salvata
-int loadGame(const char* fileName) {
+int loadGame(const char *fileName) {
   FILE *file;
   char buffer[1024];
   int i = 0;
   char filePath[256];
-  
+
   sprintf(filePath, "games/%s.json", fileName);
-  
+
   file = fopen(filePath, "r");
   if (file == NULL) {
     red;
@@ -122,28 +144,23 @@ int loadGame(const char* fileName) {
     sleep(2);
     return 0;
   }
-  
+
   // Leggi il file manualmente, poiché non abbiamo una libreria JSON
   // Questo è un parser molto semplificato che cerca i valori specifici
-  
+
   while (fgets(buffer, sizeof(buffer), file)) {
     // Leggi i dati del giocatore
     if (strstr(buffer, "\"posX\":")) {
       sscanf(buffer, "    \"posX\": %d,", &player.posX);
-    }
-    else if (strstr(buffer, "\"posY\":")) {
+    } else if (strstr(buffer, "\"posY\":")) {
       sscanf(buffer, "    \"posY\": %d,", &player.posY);
-    }
-    else if (strstr(buffer, "\"soldi\":")) {
+    } else if (strstr(buffer, "\"soldi\":")) {
       sscanf(buffer, "      \"soldi\": %d,", &player.borsa.soldi);
-    }
-    else if (strstr(buffer, "\"pokeBalls\":")) {
+    } else if (strstr(buffer, "\"pokeBalls\":")) {
       sscanf(buffer, "      \"pokeBalls\": %d,", &player.borsa.pokeBalls);
-    }
-    else if (strstr(buffer, "\"greatBalls\":")) {
+    } else if (strstr(buffer, "\"greatBalls\":")) {
       sscanf(buffer, "      \"greatBalls\": %d,", &player.borsa.greatBalls);
-    }
-    else if (strstr(buffer, "\"ultraBalls\":")) {
+    } else if (strstr(buffer, "\"ultraBalls\":")) {
       sscanf(buffer, "      \"ultraBalls\": %d", &player.borsa.ultraBalls);
     }
     // Leggi la città attuale
@@ -155,40 +172,56 @@ int loadGame(const char* fileName) {
       char tempNome[20];
       sscanf(buffer, "      \"nome\": \"%[^\"]", tempNome);
       strcpy(slot[i].nome, tempNome);
-    }
-    else if (strstr(buffer, "\"index\":") && i < 6) {
+    } else if (strstr(buffer, "\"index\":") && i < 6) {
       sscanf(buffer, "      \"index\": %d,", &slot[i].index);
-    }
-    else if (strstr(buffer, "\"maxHP\":") && i < 6) {
+    } else if (strstr(buffer, "\"maxHP\":") && i < 6) {
       sscanf(buffer, "      \"maxHP\": %d,", &slot[i].maxHP);
-    }
-    else if (strstr(buffer, "\"hp\":") && i < 6) {
+    } else if (strstr(buffer, "\"hp\":") && i < 6) {
       sscanf(buffer, "      \"hp\": %d,", &slot[i].hp);
-    }
-    else if (strstr(buffer, "\"atk\":") && i < 6) {
+    } else if (strstr(buffer, "\"atk\":") && i < 6) {
       sscanf(buffer, "      \"atk\": %d,", &slot[i].atk);
-    }
-    else if (strstr(buffer, "\"def\":") && i < 6) {
+    } else if (strstr(buffer, "\"def\":") && i < 6) {
       sscanf(buffer, "      \"def\": %d,", &slot[i].def);
-    }
-    else if (strstr(buffer, "\"spd\":") && i < 6) {
+    } else if (strstr(buffer, "\"spd\":") && i < 6) {
       sscanf(buffer, "      \"spd\": %d,", &slot[i].spd);
-    }
-    else if (strstr(buffer, "\"livello\":") && i < 6) {
+    } else if (strstr(buffer, "\"livello\":") && i < 6) {
       sscanf(buffer, "      \"livello\": %d,", &slot[i].livello);
-    }
-    else if (strstr(buffer, "\"xp\":") && i < 6) {
+    } else if (strstr(buffer, "\"xp\":") && i < 6) {
       sscanf(buffer, "      \"xp\": %d,", &slot[i].xp);
-    }
-    else if (strstr(buffer, "\"catchRate\":") && i < 6) {
+    } else if (strstr(buffer, "\"catchRate\":") && i < 6) {
       sscanf(buffer, "      \"catchRate\": %d,", &slot[i].catchRate);
-    }
-    else if (strstr(buffer, "\"slotPieno\":") && i < 6) {
+    } else if (strstr(buffer, "\"slotPieno\":") && i < 6) {
       sscanf(buffer, "      \"slotPieno\": %d", &slot[i].slotPieno);
       i++; // Incrementa il contatore degli slot dopo aver letto l'ultimo campo
     }
+    // Leggi i dati del Pokedex
+    else if (strstr(buffer, "\"pokemonVisti\": [")) {
+      int j = 0;
+      char *ptr = strchr(buffer, '['); // Trova l'inizio dei dati
+      if (ptr)
+        ptr++; // Vai oltre il [
+
+      while (j < POKEMONS && ptr && *ptr != ']') {
+        pokemonVisti[j++] = atoi(ptr);
+        ptr = strchr(ptr, ',');
+        if (ptr)
+          ptr++; // Passa al prossimo numero
+      }
+    } else if (strstr(buffer, "\"pokemonCatturati\": [")) {
+      int j = 0;
+      char *ptr = strchr(buffer, '[');
+      if (ptr)
+        ptr++;
+
+      while (j < POKEMONS && ptr && *ptr != ']') {
+        pokemonCatturati[j++] = atoi(ptr);
+        ptr = strchr(ptr, ',');
+        if (ptr)
+          ptr++;
+      }
+    }
   }
-  
+
   fclose(file);
   return 1;
 }
@@ -200,13 +233,16 @@ int showSaves() {
   char buffer[1024];
   char command[256];
   int saveCount = 0;
-  char saves[20][50]; // Massimo 20 salvataggi, con nomi lunghi fino a 50 caratteri
-  
+  char saves[20]
+            [50]; // Massimo 20 salvataggi, con nomi lunghi fino a 50 caratteri
+
   // Crea la directory games se non esiste
   mkdir("games", 0777);
-  
+
   // Lista tutti i file JSON nella cartella games
-  sprintf(command, "ls -1 games/*.json 2>/dev/null | sed 's|games/||g' | sed 's|.json||g'");
+  sprintf(
+      command,
+      "ls -1 games/*.json 2>/dev/null | sed 's|games/||g' | sed 's|.json||g'");
   pipe = popen(command, "r");
   if (pipe == NULL) {
     red;
@@ -215,43 +251,44 @@ int showSaves() {
     sleep(2);
     return 0;
   }
-  
-  cyan; bold;
+
+  cyan;
+  bold;
   printf("┏━━━━━━━━━━━━━━━━ CARICA PARTITA ━━━━━━━━━━━━━━━━┓\n");
   resetcolor;
   printf("┃                                                 ┃\n");
-  
+
   // Leggi i nomi dei file di salvataggio
   while (fgets(buffer, sizeof(buffer), pipe)) {
     // Rimuovi il newline
     buffer[strcspn(buffer, "\n")] = '\0';
-    
+
     if (strlen(buffer) > 0) {
       strcpy(saves[saveCount], buffer);
       printf("┃ [%d] %-40s ┃\n", saveCount + 1, buffer);
       saveCount++;
     }
   }
-  
+
   pclose(pipe);
-  
+
   if (saveCount == 0) {
     printf("┃ Nessun salvataggio disponibile                  ┃\n");
   }
-  
+
   printf("┃                                                 ┃\n");
   printf("┃ [0] Torna al menu principale                    ┃\n");
   printf("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛\n");
-  
+
   int choice;
   printf("\nSeleziona un salvataggio: ");
   scanf("%d", &choice);
-  
+
   if (choice == 0) {
     clear;
     return 0;
   }
-  
+
   if (choice < 1 || choice > saveCount) {
     red;
     printf("\nScelta non valida!\n");
@@ -259,7 +296,7 @@ int showSaves() {
     sleep(2);
     return 0;
   }
-  
+
   // Carica il salvataggio selezionato
   if (loadGame(saves[choice - 1])) {
     green;
@@ -268,6 +305,6 @@ int showSaves() {
     sleep(2);
     return 1;
   }
-  
+
   return 0;
 }
